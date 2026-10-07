@@ -9,4 +9,5 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('ioc-angular-biblioteca-marta-mayordomo');
+  public appName = 'La Meva Biblioteca';
 }

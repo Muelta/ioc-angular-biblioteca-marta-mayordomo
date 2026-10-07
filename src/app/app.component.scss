@@ -1,0 +1,227 @@
+.library {
+  min-height: 100vh;
+  padding: 3rem;
+  background: #24152f;
+  color: #f5eee5;
+  font-family: Arial, sans-serif;
+}
+
+//CAPÇALERA
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  padding: 3rem;
+  background: #3f5142;
+  color: #fffaf2;
+  border-radius: 18px;
+}
+
+.eyebrow,
+.section-label {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 0.15rem;
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.intro {
+  margin: 1rem 0 0;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.book-icon {
+  font-size: 5rem;
+}
+
+// ESTADÍSTIQUES
+
+.stats {
+  display: flex;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+}
+
+.stat-card {
+  flex: 1;
+  padding: 1.5rem;
+  background: #4a2948;
+  border: 1px solid #67435f;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.stat-label {
+  color: #c9b9c7;
+}
+
+// CONTINGUT BIBLIOTECA
+
+.library-content {
+  display: flex;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.books-section {
+  flex: 1;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 1rem;
+}
+
+.section-header h2,
+.pending h2 {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+// LLIBRES ORDENATS
+
+.sort-options {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.sort-options button {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #80627c;
+  border-radius: 6px;
+  background: #39233f;
+  color: #f5eee5;
+  cursor: pointer;
+}
+
+// LLIBRES
+
+.books {
+  display: flex;
+  gap: 1rem;
+}
+
+.book-card {
+  flex: 1;
+  overflow: hidden;
+  background: #39233f;
+  border: 1px solid #62445f;
+  border-radius: 12px;
+}
+
+.cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+.cover-one {
+  background: #704052;
+}
+
+.cover-two {
+  background: #536044;
+}
+
+.cover-three {
+  background: #5a4564;
+}
+
+.book-info {
+    padding: 1rem;
+}
+
+.book-info h3 {
+    margin: 0 0 0.3rem;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.25rem;
+}
+
+.book-info p {
+  margin: 0 0 0.7rem;
+  color: #c9b9c7;
+}
+
+.book-info span {
+  font-weight: bold;
+}
+
+// LECTURES PENDENTS
+
+.pending {
+  width: 280px;
+  padding: 1.5rem;
+  background: #39233f;
+  border: 1px solid #62445f;
+  border-radius: 12px;
+}
+
+.pending ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0;
+  margin: 1.5rem 0;
+  list-style: none;
+}
+
+.pending li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.pending small {
+  display: block;
+  margin-top: 0.25rem;
+  color: #c9b9c7;
+}
+
+.view-all {
+  width: 100%;
+  padding: 0.7rem;
+  border: 0;
+  border-radius: 7px;
+  background: #667746;
+  color: #fffaf2;
+  cursor: pointer;
+}
+
+// MISSATGE FINAL
+
+.ready {
+  max-width: 1200px;
+  margin: 2rem auto 0;
+  color: #9baa72;
+  font-weight: bold;
+}
