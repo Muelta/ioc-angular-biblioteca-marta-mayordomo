@@ -1,0 +1,31 @@
+.filter-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px 0;
+  padding: 16px;
+  background: #f7f5fb;
+  border-radius: 12px;
+
+  label {
+    color: #29243d;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  select {
+    padding: 10px 14px;
+    border: 1px solid #dcd5eb;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #514080;
+    font-size: 0.9rem;
+    cursor: pointer;
+    outline: none;
+
+    &:focus {
+      border-color: #6551a3;
+    }
+  }
+}

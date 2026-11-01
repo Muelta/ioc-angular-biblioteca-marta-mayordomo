@@ -1,0 +1,28 @@
+<article class="book-card">
+  <div class="book-info">
+    <h3>{{ llibre.titol }}</h3>
+
+    <p>{{ llibre.descripcio }}</p>
+
+    <p class="book-date">
+      Publicació: {{ llibre.dataPublicacio }}
+    </p>
+
+    <p class="book-pages">
+      {{ llibre.pagines }} pàgines
+    </p>
+
+    @if (llibre.destacat) {
+      <span class="featured">
+        Llibre destacat
+      </span>
+    }
+
+    <app-book-category [categoria]="llibre.categoria">
+    </app-book-category>
+
+    <button type="button" (click)="seleccionar()">
+      Veure llibre
+    </button>
+  </div>
+</article>

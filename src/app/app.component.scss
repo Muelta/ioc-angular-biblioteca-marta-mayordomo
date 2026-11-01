@@ -180,10 +180,12 @@
 
 .pending {
   width: 280px;
-  padding: 1.5rem;
+  height: fit-content;
+  padding: 1.2rem;
   background: #39233f;
   border: 1px solid #62445f;
   border-radius: 12px;
+  align-self: flex-start;
 }
 
 .pending ul {

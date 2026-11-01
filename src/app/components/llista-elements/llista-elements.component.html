@@ -1,0 +1,12 @@
+<section class="books-section">
+  <h2>La meva col·lecció de terror</h2>
+
+  <div class="books-grid">
+    @for (llibre of llibres; track llibre.id) {
+      <app-targeta-llibre
+        [llibre]="llibre"
+        (llibreSeleccionat)="seleccionarLlibre($event)">
+      </app-targeta-llibre>
+    }
+  </div>
+</section>

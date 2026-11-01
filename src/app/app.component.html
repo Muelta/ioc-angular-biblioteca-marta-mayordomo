@@ -44,37 +44,22 @@
         </div>
       </div>
 
-      <div class="books">
-        <article class="book-card">
-          <div class="cover cover-one">1984</div>
+      <app-filtre-llibres
+        [categories]="categories"
+        (filtreAplicat)="aplicarFiltre($event)">
+      </app-filtre-llibres>
 
-          <div class="book-info">
-            <h3>1984</h3>
-            <p>George Orwell</p>
-            <span>⭐ 5,0</span>
-          </div>
-        </article>
+      <app-llista-elements
+        [llibres]="llibresFiltrats"
+        (llibreSeleccionat)="seleccionarLlibre($event)">
+      </app-llista-elements>
 
-        <article class="book-card">
-          <div class="cover cover-two">DUNE</div>
-
-          <div class="book-info">
-            <h3>Dune</h3>
-            <p>Frank Herbert</p>
-            <span>⭐ 4,5</span>
-          </div>
-        </article>
-
-        <article class="book-card">
-          <div class="cover cover-three">EL HOBBIT</div>
-
-          <div class="book-info">
-            <h3>El Hobbit</h3>
-            <p>J. R. R. Tolkien</p>
-            <span>⭐ 5,0</span>
-          </div>
-        </article>
-      </div>
+      @if (llibreSeleccionat) {
+        <section class="selected-book">
+          <h3>Llibre seleccionat</h3>
+          <p>{{ llibreSeleccionat.titol }}</p>
+        </section>
+      }
     </div>
 
     <aside class="pending">

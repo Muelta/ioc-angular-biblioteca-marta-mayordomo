@@ -1,0 +1,11 @@
+<div class="filter-container">
+  <label for="categoria">Filtrar per categoria:</label>
+
+  <select id="categoria" (change)="aplicarFiltre($event)">
+    <option value="">Totes les categories</option>
+
+    @for (categoria of categories; track categoria) {
+      <option [value]="categoria">{{ categoria }}</option>
+    }
+  </select>
+</div>
