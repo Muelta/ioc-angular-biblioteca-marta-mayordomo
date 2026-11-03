@@ -6,8 +6,6 @@
   font-family: Arial, sans-serif;
 }
 
-//CAPÇALERA
-
 .hero {
   display: flex;
   justify-content: space-between;
@@ -46,8 +44,6 @@
   font-size: 5rem;
 }
 
-// ESTADÍSTIQUES
-
 .stats {
   display: flex;
   gap: 1rem;
@@ -75,8 +71,6 @@
   color: #c9b9c7;
 }
 
-// CONTINGUT BIBLIOTECA
-
 .library-content {
   display: flex;
   gap: 2rem;
@@ -103,8 +97,6 @@
     font-weight: 700;
 }
 
-// LLIBRES ORDENATS
-
 .sort-options {
   display: flex;
   align-items: center;
@@ -120,8 +112,6 @@
   color: #f5eee5;
   cursor: pointer;
 }
-
-// LLIBRES
 
 .books {
   display: flex;
@@ -176,8 +166,6 @@
   font-weight: bold;
 }
 
-// LECTURES PENDENTS
-
 .pending {
   width: 280px;
   height: fit-content;
@@ -219,11 +207,134 @@
   cursor: pointer;
 }
 
-// MISSATGE FINAL
-
 .ready {
   max-width: 1200px;
   margin: 2rem auto 0;
   color: #9baa72;
   font-weight: bold;
+}
+
+.selected-book {
+  background: #39233f;
+  border: 1px solid #6551a3;
+  border-radius: 14px;
+  padding: 20px;
+  margin-top: 24px;
+  color: #f5eee5;
+
+  h3 {
+    color: #fffaf2;
+    font-family: Georgia, 'Times New Roman', serif;
+    margin-top: 0;
+  }
+
+  h4 {
+    color: #e6d9ff;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+
+  p {
+    line-height: 1.5;
+    margin: 8px 0;
+  }
+
+  strong {
+    color: #d6c5f0;
+  }
+
+  .featured {
+    display: inline-block;
+    background: #fff0d9;
+    color: #98621c;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #d6c5f0;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 2px #24152f;
+}
+
+@media (max-width: 768px) {
+  .library {
+    padding: 1rem;
+  }
+
+  .hero {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .book-icon {
+    font-size: 3rem;
+  }
+
+  .stats {
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    min-width: 40%;
+    box-sizing: border-box;
+  }
+
+  .library-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .books-section {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .pending {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .section-header {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .section-header h2,
+  .pending h2 {
+    font-size: 1.6rem;
+  }
+
+  .sort-options {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero {
+    padding: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .book-icon {
+    font-size: 2rem;
+  }
+
+  .stat-card {
+    min-width: 100%;
+  }
 }

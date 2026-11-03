@@ -31,15 +31,21 @@ export class App {
     ...new Set(BOOKS.map(llibre => llibre.categoria))
   ];
 
-  aplicarFiltre(categoria: string): void {
-    if (categoria === '') {
-      this.llibresFiltrats = this.llibres;
-    } else {
-      this.llibresFiltrats = this.llibres.filter(
-        llibre => llibre.categoria === categoria
-      );
-    }
-  }
+  aplicarFiltre(filtres: { text: string; categoria: string }): void {
+  const text = filtres.text.toLowerCase().trim();
+  const categoria = filtres.categoria;
+
+  this.llibresFiltrats = this.llibres.filter(llibre => {
+    const coincideixText =
+      llibre.titol.toLowerCase().includes(text) ||
+      llibre.descripcio.toLowerCase().includes(text);
+
+    const coincideixCategoria =
+      categoria === '' || llibre.categoria === categoria;
+
+    return coincideixText && coincideixCategoria;
+  });
+}
 
   seleccionarLlibre(llibre: Book): void {
     this.llibreSeleccionat = llibre;

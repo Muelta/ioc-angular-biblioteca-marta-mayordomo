@@ -1,11 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { Book } from '../../models/book.model';
 import { CategoriaLlibreComponent } from '../categoria-llibre/categoria-llibre.component';
 
 @Component({
   selector: 'app-targeta-llibre',
   standalone: true,
-  imports: [CategoriaLlibreComponent],
+  imports: [CategoriaLlibreComponent, DatePipe],
   templateUrl: './targeta-llibre.component.html',
   styleUrl: './targeta-llibre.component.scss'
 })

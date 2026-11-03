@@ -1,11 +1,52 @@
-<div class="filter-container">
-  <label for="categoria">Filtrar per categoria:</label>
+<form #formulari="ngForm" (ngSubmit)="aplicarFiltre()" class="filter-container">
 
-  <select id="categoria" (change)="aplicarFiltre($event)">
-    <option value="">Totes les categories</option>
+  <div class="filter-field">
+    <label for="textCerca">Cercar llibre:</label>
+    <input
+      type="text"
+      id="textCerca"
+      name="textCerca"
+      [(ngModel)]="textCerca"
+      required
+      minlength="3"
+      #campText="ngModel"
+      placeholder="Escriu almenys 3 caràcters..."
+    >
 
-    @for (categoria of categories; track categoria) {
-      <option [value]="categoria">{{ categoria }}</option>
+    @if (campText.invalid && (campText.dirty || campText.touched)) {
+      <div class="error-message" role="alert" aria-live="assertive">
+        @if (campText.errors?.['required']) {
+          <p>El camp de cerca és obligatori.</p>
+        }
+        @if (campText.errors?.['minlength']) {
+          <p>Has d'escriure com a mínim 3 caràcters.</p>
+        }
+      </div>
     }
-  </select>
-</div>
+  </div>
+
+  <div class="filter-field">
+    <label for="categoria">Filtrar per categoria:</label>
+    <select
+      id="categoria"
+      name="categoria"
+      [(ngModel)]="categoriaSeleccionada"
+    >
+      <option value="">Totes les categories</option>
+      @for (categoria of categories; track categoria) {
+        <option [value]="categoria">{{ categoria }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="filter-buttons">
+    <button type="submit" [disabled]="formulari.invalid">
+      Aplicar filtres
+    </button>
+
+    <button type="button" (click)="restablirFiltres()">
+      Restablir
+    </button>
+  </div>
+
+</form>

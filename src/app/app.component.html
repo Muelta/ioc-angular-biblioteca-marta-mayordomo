@@ -1,4 +1,7 @@
-<main class="library">
+<a class="skip-link" href="#main-content">
+  Salta al contingut principal
+</a>
+<<main class="library" id="main-content">
   <header class="hero">
     <div>
 
@@ -57,7 +60,18 @@
       @if (llibreSeleccionat) {
         <section class="selected-book">
           <h3>Llibre seleccionat</h3>
-          <p>{{ llibreSeleccionat.titol }}</p>
+          <h4>{{ llibreSeleccionat.titol }}</h4>
+          <p>{{ llibreSeleccionat.descripcio }}</p>
+          <p><strong>Categoria:</strong> {{ llibreSeleccionat.categoria }}</p>
+          <p><strong>Data de publicació:</strong> {{ llibreSeleccionat.dataPublicacio }}</p>
+          <p><strong>Nombre de pàgines:</strong> {{ llibreSeleccionat.pagines }}</p>
+          @if (llibreSeleccionat.destacat) {
+            <p class="featured">Llibre destacat</p>
+        }
+        </section>
+      } @else {
+        <section class="selected-book">
+          <p>Selecciona un llibre per veure'n els detalls.</p>
         </section>
       }
     </div>

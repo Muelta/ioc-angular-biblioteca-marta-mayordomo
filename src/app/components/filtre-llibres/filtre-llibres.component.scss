@@ -28,4 +28,13 @@
       border-color: #6551a3;
     }
   }
+  .error-message {
+    color: #b42318;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-top: 6px;
+    p {
+      margin: 4px 0;
+    }
+  }
 }

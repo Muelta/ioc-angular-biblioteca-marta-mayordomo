@@ -21,12 +21,12 @@ export const BOOKS: Book[] = [
   },
   {
     id: 3,
-    titol: 'It',
-    descripcio: 'Un grup d’amics s’enfronta a una presència terrorífica a Derry.',
-    categoria: 'Terror sobrenatural',
-    dataPublicacio: '1986',
-    pagines: 1504,
-    destacat: true
+    titol: 'La sombra sobre Innsmouth',
+    descripcio: 'Un jove descobreix els foscos secrets d’un poble costaner habitat per éssers misteriosos.',
+    categoria: 'Terror còsmic',
+    dataPublicacio: '1936-04-01',
+    pagines: 160,
+    destacat: false
   },
   {
     id: 4,

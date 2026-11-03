@@ -1,12 +1,22 @@
 <section class="books-section">
   <h2>La meva col·lecció de terror</h2>
 
-  <div class="books-grid">
-    @for (llibre of llibres; track llibre.id) {
-      <app-targeta-llibre
-        [llibre]="llibre"
-        (llibreSeleccionat)="seleccionarLlibre($event)">
-      </app-targeta-llibre>
-    }
-  </div>
+  @if (llibres.length > 0) {
+    <p class="results-count" role="status" aria-live="polite">
+      Resultats trobats: {{ llibres.length }}
+    </p>
+
+    <div class="books-grid">
+      @for (llibre of llibres; track llibre.id) {
+        <app-targeta-llibre
+          [llibre]="llibre"
+          (llibreSeleccionat)="seleccionarLlibre($event)">
+        </app-targeta-llibre>
+      }
+    </div>
+  } @else {
+    <p class="no-results">
+      No s'han trobat llibres amb els filtres seleccionats.
+    </p>
+  }
 </section>
