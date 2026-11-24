@@ -1,9 +1,9 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, effect, inject, signal } from '@angular/core';
 
 import { Book } from './models/book.model';
-import { BOOKS } from './data/books.mock';
+import { BooksService } from './services/books.service';
 import { LlistaElementsComponent } from './components/llista-elements/llista-elements.component';
-import { FiltreLlibresComponent } from './components/filtre-llibres/filtre-llibres.component';
+import { FiltreLlibresComponent, FiltreLlibresValue } from './components/filtre-llibres/filtre-llibres.component';
 
 @Component({
   selector: 'app-root',
@@ -12,42 +12,64 @@ import { FiltreLlibresComponent } from './components/filtre-llibres/filtre-llibr
     LlistaElementsComponent,
     FiltreLlibresComponent
   ],
-  styleUrl: './app.component.scss',
-  templateUrl: './app.component.html',
+  styleUrl: '../app/components/app.component.scss',
+  templateUrl: '../app/components/app.component.html',
 })
-export class App {
+export class App implements OnInit {
+
+  private readonly booksService = inject(BooksService);
 
   protected readonly title = signal('ioc-angular-biblioteca-marta-mayordomo');
 
   public appName = 'La Meva Biblioteca';
 
-  llibres: Book[] = BOOKS;
+  llibres: Book[] = [];
 
-  llibresFiltrats: Book[] = BOOKS;
+  llibresFiltrats: Book[] = [];
 
   llibreSeleccionat: Book | null = null;
 
-  categories: string[] = [
-    ...new Set(BOOKS.map(llibre => llibre.categoria))
-  ];
+  categories: string[] = [];
 
-  aplicarFiltre(filtres: { text: string; categoria: string }): void {
-  const text = filtres.text.toLowerCase().trim();
-  const categoria = filtres.categoria;
+  private ultimFiltre: FiltreLlibresValue = { text: '', categoria: '' };
 
-  this.llibresFiltrats = this.llibres.filter(llibre => {
-    const coincideixText =
-      llibre.titol.toLowerCase().includes(text) ||
-      llibre.descripcio.toLowerCase().includes(text);
+  constructor() {
+    effect(() => {
+      const llibresApi = this.booksService.books();
+      this.llibres = llibresApi;
+      this.categories = [...new Set(llibresApi.map(llibre => llibre.categoria))];
+      this.filtrarLlibres(this.ultimFiltre);
+    });
+  }
 
-    const coincideixCategoria =
-      categoria === '' || llibre.categoria === categoria;
+  ngOnInit(): void {
+    this.booksService.getBooks().subscribe({ error: () => {} });
+  }
 
-    return coincideixText && coincideixCategoria;
-  });
-}
+  aplicarFiltre(filtres: FiltreLlibresValue): void {
+    this.ultimFiltre = filtres;
+    this.filtrarLlibres(filtres);
+  }
 
   seleccionarLlibre(llibre: Book): void {
     this.llibreSeleccionat = llibre;
+  }
+  
+  private filtrarLlibres(filtres: FiltreLlibresValue): void {
+    const text = filtres.text.toLowerCase().trim();
+    const categoria = filtres.categoria;
+
+    this.llibresFiltrats = this.llibres.filter(llibre => {
+      const coincideixText =
+        !text ||
+        llibre.titol.toLowerCase().includes(text) ||
+        llibre.categoria.toLowerCase().includes(text) ||
+        llibre.descripcio.toLowerCase().includes(text);
+
+      const coincideixCategoria =
+        categoria === '' || llibre.categoria === categoria;
+
+      return coincideixText && coincideixCategoria;
+    });
   }
 }

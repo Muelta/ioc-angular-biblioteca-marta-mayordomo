@@ -1,9 +1,12 @@
+export type ReadingStatus = 'Acabat' | 'Pendent' | 'En procés';
+
 export interface Book {
-  id: number;
+  id: string;
   titol: string;
   descripcio: string;
   categoria: string;
-  dataPublicacio: string;
+  anyPublicacio: string;
+  estat: ReadingStatus;
   pagines: number;
-  destacat?: boolean;
+  destacat: boolean;
 }

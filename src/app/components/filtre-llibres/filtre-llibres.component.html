@@ -1,37 +1,45 @@
-<form #formulari="ngForm" (ngSubmit)="aplicarFiltre()" class="filter-container">
+
+<form [formGroup]="formulari" (ngSubmit)="aplicarFiltre()" class="filter-container">
 
   <div class="filter-field">
     <label for="textCerca">Cercar llibre:</label>
+
     <input
       type="text"
       id="textCerca"
-      name="textCerca"
-      [(ngModel)]="textCerca"
-      required
-      minlength="3"
-      #campText="ngModel"
+      formControlName="text"
       placeholder="Escriu almenys 3 caràcters..."
     >
 
     @if (campText.invalid && (campText.dirty || campText.touched)) {
       <div class="error-message" role="alert" aria-live="assertive">
+
         @if (campText.errors?.['required']) {
           <p>El camp de cerca és obligatori.</p>
         }
+
         @if (campText.errors?.['minlength']) {
           <p>Has d'escriure com a mínim 3 caràcters.</p>
         }
+
+        @if (campText.errors?.['noResults']) {
+          <p>No s'han trobat llibres amb aquest terme.</p>
+        }
+
+        @if (campText.errors?.['apiError']) {
+          <p>No s'ha pogut comprovar la cerca a l'API.</p>
+        }
       </div>
+    }
+    @if (campText.pending) {
+      <p class="validation-message">Comprovant els resultats...</p>
     }
   </div>
 
   <div class="filter-field">
     <label for="categoria">Filtrar per categoria:</label>
-    <select
-      id="categoria"
-      name="categoria"
-      [(ngModel)]="categoriaSeleccionada"
-    >
+
+    <select id="categoria" formControlName="categoria">
       <option value="">Totes les categories</option>
       @for (categoria of categories; track categoria) {
         <option [value]="categoria">{{ categoria }}</option>
@@ -40,7 +48,10 @@
   </div>
 
   <div class="filter-buttons">
-    <button type="submit" [disabled]="formulari.invalid">
+    <button
+      type="submit"
+      [disabled]="formulari.invalid || formulari.pending"
+    >
       Aplicar filtres
     </button>
 
@@ -48,5 +59,19 @@
       Restablir
     </button>
   </div>
+
+  @if (historialCerques().length > 0) {
+    <div class="search-history">
+      <span>Cerques recents:</span>
+      @for (terme of historialCerques(); track terme) {
+        <button type="button" (click)="aplicarDesDeHistorial(terme)">
+          {{ terme }}
+        </button>
+      }
+      <button type="button" (click)="esborrarHistorial()">
+        Esborrar historial
+      </button>
+    </div>
+  }
 
 </form>
